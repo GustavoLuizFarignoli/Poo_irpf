@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(to right, #105ac9, #0e3879);
+        }
+        .box{
+            position: absolute; /*para ocupar apenas o espaço necessário*/
+            top: 50%; /*para centralizar, da tag "top" até a tag "transform"*/
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 15px;
+            width: 400px;
+            color: white;
+        }
+        fieldset{
+            border: 3px solid dodgerblue;
+        }
+        legend{
+            border: 1px solid dodgerblue;
+            padding: 10px;
+            text-align: center;
+            background-color: dodgerblue;
+            border-radius: 8px;
+        }
+        .inputBox{
+            position: relative;
+        }
+        .inputUser{
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none; /*serve para tirar o circulado quando selecionamos algum inputbox*/
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px; /*determina o espaçamento entre as letras*/
+        }
+        .labelInput{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none; /*qualquer lugar que eu clicar dentro do input ele vai executar a ação*/
+            transition: .5s;
+        }
+        .inputUser:focus ~ .labelInput, /*quando der focus no input (.inputUser:focus) execute ação no label (~.labelInput)*/
+        .inputUser:valid ~ .labelInput{ /*quando tiver algo digitado no input (.inputUser:valid) execute ação no label (~.labelInput)*/
+            top: -20px;
+            font-size: 14px;
+            color: dodgerblue;
+        }
+        #submit{ /*para chamar através do id*/
+            background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer; /*quando passar o mouse por cima ele muda o cursor*/
+            border-radius: 8px;
+        }
+        #submit:hover{ /*quando passar o mouse por cima ele muda a cor*/
+            background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
+        }
+        @media (min-width: 800px){
+            .box{
+                width: 400px;
+            }
+        }
+        @media (max-width: 450px){
+            .box{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form name="f_IR" method="post" action="teste.php" autocomplete="off">
+            <fieldset>
+                <legend><b>Dados do Usuário</b></legend>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="f_nome" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">Nome</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="f_salario" id="salario" class="inputUser" required>
+                    <label for="salario" class="labelInput">Salário</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="f_nDependentes" id="nDependentes" class="inputUser" required>
+                    <label for="nDependentes" class="labelInput">Nº de dependentes</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="f_pensao" id="pensao" class="inputUser" required>
+                    <label for="pensao" class="labelInput">Pensão alimentícia</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="f_outrasDeducoes" id="outrasDeducoes" class="inputUser" required>
+                    <label for="outrasDeducoes" class="labelInput">Outras deduções</label>
+                </div>
+                <br><br>
+                <input type="submit" name="submit" id="submit">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
